@@ -4,14 +4,14 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, stdenv }:
+  f = { mkDerivation, base, gi-gtk, haskell-gi-base, stdenv }:
       mkDerivation {
         pname = "haskell-gi-example";
         version = "0.1.0.0";
         src = ./.;
         isLibrary = false;
         isExecutable = true;
-        executableHaskellDepends = [ base ];
+        executableHaskellDepends = [ base gi-gtk haskell-gi-base ];
         license = "unknown";
         hydraPlatforms = stdenv.lib.platforms.none;
       };
